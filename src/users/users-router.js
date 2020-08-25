@@ -11,6 +11,7 @@ const serializeUser = user => ({
   fullname: xss(user.fullname),
   username: xss(user.username),
   nickname: xss(user.nickname),
+  password: xss(user.password),
   date_created: user.date_created,
 })
 
