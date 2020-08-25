@@ -5,12 +5,14 @@ const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const ArticlesService = require('./articles-service')
+const usersRouter = require('./users/users-router')
 
 const app = express()
 
 app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common'))
 app.use(cors())
 app.use(helmet())
+app.use('/api/users', usersRouter)
 
 app.get('/articles', (req, res, next) => {
   const knexInstance = req.app.get('db')
